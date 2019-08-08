@@ -1,0 +1,40 @@
+{
+  "name": "bcl",
+  "keywords": "nayuki, ark, bitcoin, crypto, cryptocurrency, cryptography, ecdsa, secp256k1, blockchain, iot, arduino, espressif",
+  "description": "A fork of Nayukis Bitcoin Cryptography Library. This project implements the cryptographic primitives used in the Bitcoin system, especially elliptic curve operations and hash functions. This fork adds extra package and testing functionality.",
+  "homepage": "https://github.com/sleepdefic1t/bcl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sleepdefic1t/bcl.git"
+  },
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Nayuki",
+      "email": "me@nayuki.io",
+      "url": "https://github.com/nayuki"
+    },
+    {
+      "name": "Simon Downey",
+      "email": "simon@ark.io",
+      "url": "https://github.com/sleepdefic1t"
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "*",
+  "export": {
+    "include": [
+      "src/*",
+      "*.md",
+      "*.json",
+      "*.properties",
+      "LICENSE",
+      "*.ini",
+      "keywords.txt"
+    ],
+    "exclude": [
+      "*/*.txt",
+      "extras"
+    ]
+  }
+}

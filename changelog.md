@@ -1,0 +1,26 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Changed
+-   separated implementation from tests.
+-   added cmake in place of make.
+-   added googletest submodule to extern.
+-   updated tests to use gtest vs ctest.
+-   updated test vectors to use arrays where possible.
+-   disables opcount and stashes files in extras/nayuki.
+-   disables X8664 and stashes files in extras/nayuki.
+-   stashes original Makefile in extras/nayuki.
+-   stashes java implementation in extras/nayuki.
+-   added platformio configuration files, testing disabled (cases not small enough for IoT yet).
+-   added keywords.txt.
+-   added library manifest files.
+-   updated license.
+-   updated readme's.
+
+[Unreleased]: https://github.com/sleepdefic1t/bcl/compare/master...develop
