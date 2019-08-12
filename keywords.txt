@@ -1,0 +1,103 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Base58Check	KEYWORD1
+CountOps	KEYWORD1
+CurvePoint	KEYWORD1
+Ecdsa	KEYWORD1
+ExtendedPrivateKey	KEYWORD1
+FieldInt	KEYWORD1
+Keccak256	KEYWORD1
+Ripemd160	KEYWORD1
+Sha256	KEYWORD1
+Sha256Hash	KEYWORD1
+Sha512	KEYWORD1
+Uint256	KEYWORD1
+Utils	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+pubkeyHashFromBase58Check	KEYWORD2
+pubkeyHashToBase58Check	KEYWORD2
+privateKeyFromBase58Check	KEYWORD2
+privateKeyToBase58Check	KEYWORD2
+
+extendedPrivateKeyFromBase58Check	KEYWORD2
+extendedPrivateKeyToBase58Check	KEYWORD2
+getChildKey	KEYWORD2
+
+countOps	KEYWORD2
+
+isOnCurve	KEYWORD2
+isZero	KEYWORD2
+
+privateExponentToPublicPoint	KEYWORD2
+toCompressedPoint	KEYWORD2
+
+add	KEYWORD2
+subtract	KEYWORD2
+twice	KEYWORD2
+multiply	KEYWORD2
+multiply2	KEYWORD2
+reciprocal	KEYWORD2
+shiftLeft1	KEYWORD2
+shiftRight1	KEYWORD2
+square	KEYWORD2
+
+compress	KEYWORD2
+normalize	KEYWORD2
+
+append	KEYWORD2
+replace	KEYWORD2
+swap	KEYWORD2
+
+getHash	KEYWORD2
+getHmac	KEYWORD2
+getDoubleHash	KEYWORD2
+
+sign	KEYWORD2
+signWithHmacNonce	KEYWORD2
+verify	KEYWORD2
+
+copyBytes	KEYWORD2
+getBigEndianBytes	KEYWORD2
+parseHexDigit	KEYWORD2
+storeBigUint32	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+ALPHABET	LITERAL1
+
+FI_ZERO	LITERAL1
+FI_ONE	LITERAL1
+A	LITERAL1
+B	LITERAL1
+ORDER	LITERAL1
+G	LITERAL1
+ZERO	LITERAL1
+ONE	LITERAL1
+
+HASH_LEN	LITERAL1
+BLOCK_LEN	LITERAL1
+NUM_WORDS	LITERAL1
+
+HEX_DIGITS	LITERAL1
+
+value	LITERAL1
+
+HARDEN	LITERAL1
+privateKey	LITERAL1
+publicKey	LITERAL1
+chainCode	LITERAL1
+depth	LITERAL1
+index	LITERAL1
+parentPubkeyHash	LITERAL1
