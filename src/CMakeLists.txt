@@ -9,7 +9,7 @@ if(EXISTS "${LOC_PATH}")
 		"ERROR: Out of Source Build attempted.\n"
 		"You cannot build in a source directory (or any directory with a CMakeLists.txt file).\n"
 		"Please use the build directory at root.\n"
-		"e.g. 'cd bcl/build && cmake ../ && cmake --build .'\n"
+		"e.g. 'mkdir build && cd build && cmake ../ && cmake --build .'\n"
 		"You should also remove CMakeCache.txt and CMakeFiles.\n"
 		"=================================================\n")
 endif()

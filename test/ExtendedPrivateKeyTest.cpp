@@ -17,9 +17,8 @@
 #include "ExtendedPrivateKey.hpp"
 #include "Uint256.hpp"
 
-namespace bcl {
 
-
+using namespace bcl;
 using std::uint8_t;
 
 
@@ -71,6 +70,3 @@ TEST(extended_private_key, child_keys) {
 	child = child.getChildKey(UINT32_C(65536));
 	ASSERT_TRUE(child.privateKey == Uint256("A03A015E0936119558D022514AC8326B340FC69C3266442603A3C212004054E3"));
 }
-
-
-}  // namespace bcl

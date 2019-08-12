@@ -16,6 +16,13 @@ Run tests after building:
 ./test/bcl_tests
 ```
 
+Build and run unit tests using AUnit for Embedded
+-------------------------------------------------
+```bash
+cd test
+pio run -e esp32 -t upload
+```
+
 Successful Tests!
 ```bash
 [==========] Running 43 tests from 11 test suites.

@@ -1,6 +1,6 @@
 BCL: Nayuki's Bitcoin Cryptography Library
 ==========================================
-> A fork of Nayuki's Bitcoin Cryptography Library using CMake, PlatformIO & GoogleTest 
+> A fork of Nayuki's Bitcoin Cryptography Library using CMake, PlatformIO & GoogleTest/AUnit 
 
 about
 -----
@@ -32,8 +32,6 @@ Run tests after building:
 
 TODO
 ----
--    limit fixture sizes for IoT.
--    improve tests cases.
 -    re-implement X8664 code.
 -    re-implement CountOps.
 
@@ -59,6 +57,7 @@ License
 -------
 
 Copyright © 2019 Project Nayuki. (MIT License)
+Copyright © 2019 Simon Downey (ARK.io). (MIT License)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

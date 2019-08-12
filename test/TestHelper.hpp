@@ -11,14 +11,13 @@
 #pragma once
 
 #undef NDEBUG
+#include <array>
 #include <cassert>
 #include <cstddef>
 #include <cstdio>
 #include <cstdint>
 #include <cstring>
 #include <vector>
-
-namespace bcl {
 
 
 using std::size_t;
@@ -44,6 +43,3 @@ static inline Bytes hexBytes(const char *str) {
 	}
 	return result;
 }
-
-
-}  // namespace bcl

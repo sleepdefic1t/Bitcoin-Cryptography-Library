@@ -18,7 +18,8 @@
 #include <cstring>
 #include "Ripemd160.hpp"
 
-namespace bcl {
+
+using namespace bcl;
 
 
 TEST(ripemd160, hashing) {
@@ -27,7 +28,11 @@ TEST(ripemd160, hashing) {
 		const char *expectedHash;
 		Bytes message;
 	};
-	const size_t CASE_SIZE = 158U;
+	#ifdef USE_EMBEDDED
+	static constexpr size_t CASE_SIZE = 50U;
+	#else
+	static constexpr size_t CASE_SIZE = 158U;
+	#endif
 	const array<TestCase, CASE_SIZE> cases{{
 		// Standard test vectors
 		{true, "9C1185A5C5E9FC54612808977EE8F548B2258D31", asciiBytes("")},
@@ -82,6 +87,7 @@ TEST(ripemd160, hashing) {
 		{true, "B5AB29B0EF24A8792E49013BD7294F1781BB7D62", asciiBytes("tJPhq&-t\\a,pF->~:3_^1m+^Nn</K(c!T4 ")},
 		{true, "DFDE378B886C6E22E4AF927B2676E9DE91C122C8", asciiBytes("jevce\"SJo0'bb->[BF`1oAAY?2y;h3G[G~]J")},
 		{true, "21D8A074D899065500A07BF23B1D2311DFCE3861", asciiBytes("V}QN-2XPNfz\"Ngq_:#4y2TyqP@\"f4~H69z))7")},
+#ifndef USE_EMBEDDED
 		{true, "05EE401564118701DF4739A1591607F60AAEFEC4", asciiBytes(":u'rQ4OJ!!%iyy)QZOzUeDqL/vdei7Dr-qSP Q")},
 		{true, "EA6C7E377778A4F93A9E910269486F5F6514C6AF", asciiBytes("7YJ;'nyG6D>;owuzqZ6wRVs_'*Z'J?3zm}FJ4 R")},
 		{true, "CB4C6052E5E162820A2A79E2868809CA9D3155AF", asciiBytes("&CBo|c)KL%3)T;.ZGJK#aBMqv'~^>N}+WS{DBgMd")},
@@ -191,6 +197,7 @@ TEST(ripemd160, hashing) {
 		{true, "A09EC352C3ADC74F5EED4EDB3DB764F44B8FE2CD", hexBytes("94E8D77965A1E0E686749AB459D8")},
 		{true, "0CD998103F24A3E9F749E89C2D15F003CF19F17C", hexBytes("64AE32F6976AC0019744C48DFB0F4F")},
 		{true, "B78A645A28E94664C08FF98C515315D91EB688C0", hexBytes("1B6280E15BA61D91B623490A49589D83")},
+#endif
 	}};
 	
 	for (const TestCase &tc : cases) {
@@ -201,6 +208,3 @@ TEST(ripemd160, hashing) {
 		assert((std::memcmp(actualHash, expectHash.data(), Ripemd160::HASH_LEN) == 0) == tc.matches);
 	}
 }
-
-
-}  // namespace bcl

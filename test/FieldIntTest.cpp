@@ -18,9 +18,8 @@
 // #include "AsmX8664.hpp"
 #include "FieldInt.hpp"
 
-namespace bcl {
 
-
+using namespace bcl;
 using std::uint32_t;
 
 
@@ -380,6 +379,3 @@ TEST(field_int, constructor_uint256) {
 
 
 // #endif
-
-
-}  // namespace bcl

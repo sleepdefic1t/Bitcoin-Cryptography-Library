@@ -18,7 +18,8 @@
 #include <cstring>
 #include "Keccak256.hpp"
 
-namespace bcl {
+
+using namespace bcl;
 
 
 TEST(keccak, tests) {
@@ -56,6 +57,3 @@ TEST(keccak, tests) {
 		assert((std::memcmp(actualHash, expectHash.data(), Keccak256::HASH_LEN) == 0) == tc.matches);
 	}
 }
-
-
-}  // namespace bcl

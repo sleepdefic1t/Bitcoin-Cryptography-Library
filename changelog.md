@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   added keywords.txt.
 -   added library manifest files.
 -   updated license.
--   updated readme's.
+-   updated readme's and use `.md`.
+-   splits large test cases for OS and Embedded storage.
+-   adds AUnit for Embedded test on ESP32 board.
 
 [Unreleased]: https://github.com/sleepdefic1t/bcl/compare/master...develop

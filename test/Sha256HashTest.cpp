@@ -17,7 +17,8 @@
 #include <cstring>
 #include "Sha256Hash.hpp"
 
-namespace bcl {
+
+using namespace bcl;
 
 
 TEST(sha256hash, equality) {
@@ -53,6 +54,3 @@ TEST(sha256hash, get_byte) {
 	assert(hash.value[30] == 0x1A);
 	assert(hash.value[31] == 0xFD);
 }
-
-
-}  // namespace bcl

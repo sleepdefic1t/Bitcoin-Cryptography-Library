@@ -20,7 +20,8 @@
 #include "Sha256.hpp"
 #include "Sha256Hash.hpp"
 
-namespace bcl {
+
+using namespace bcl;
 
 
 /*---- Structures ----*/
@@ -38,7 +39,11 @@ struct TestCase {
 
 TEST(sha256, single_hash) {
 	// Single SHA-256 hash
-	const size_t CASE_SIZE = 136U;
+	#ifdef USE_EMBEDDED
+	static constexpr size_t CASE_SIZE = 50U;
+	#else
+	static constexpr size_t CASE_SIZE = 136U;
+	#endif
 	const array<TestCase, CASE_SIZE> singleCases{{
 		// Standard test vectors
 		{true, "55B852781B9995A44C939B64E441AE2724B96F99C8F4FB9A141CFC9842C4B0E3", asciiBytes("")},
@@ -93,6 +98,7 @@ TEST(sha256, single_hash) {
 		{true, "69DD41EF45671445E0AF3D1389152CC681DE49BDBC593F96B50C879507AD3AD5", asciiBytes("2/6<-xS4E)1:p<~!,.^.>AX9AyaAVbP3/k>MU88A")},
 		{true, "B92DACB6A360DE574BEBB8E22315D95D9D79AEA5D895F8A6B475CF8979E7BB14", asciiBytes("%,-v7y@\\T+`^=ais olL8\"7;]kUc{.p'$*iRyYyEt")},
 		{true, "E3C5C024E5723D11CC360F368AD0606432F6FD5F469805FD2C4DF81E627E9B3F", asciiBytes("HGqueCu(AZV:;R+h eE5*VX``jRn1>Y1>PVO.;ai7K")},
+#ifndef USE_EMBEDDED
 		{true, "1B9B11F5268027A26E84402BE0E18F54C44D262C61238DD376BD7B093E64E236", asciiBytes("+f5d0;l;~/YPaU{T#,81IgtLzPNbR}@p)8S O>*rFOm")},
 		{true, "3B07EC8C0419A362A8FD7E02C450BF67B1E3F1DCCEF77DD9F20751936FD64917", asciiBytes("H$T-S.9H(nI~b5{}a3,_0f4Bk#zEh5D3Bhii`@qZ*X*)")},
 		{true, "75D294BACF2383C0A1B034F5A4AAAFDD44A92FC0F71F53CD4F6ED9478D2E4E02", asciiBytes("l:EE?=fruAeU\\%jl~1<N_lH6ibQUx*0D\\k\"#`cO\"(xTI_")},
@@ -179,6 +185,7 @@ TEST(sha256, single_hash) {
 		{true, "E214C459DFC66AB4E36D4BA625F9A95805147749743DA27F515A04EA616A0C18", asciiBytes(">6xVDIi]tN*Y'pp6`3i7Hb\\.Z>\"D6O&uV$vG=_gdEfXwYeAiD%g$F=.qw9@)V4d*R\"[5#m.r'\"^s-CL~H'o:,!5}|.)yUjH/yBlK^LV}v?47FdY,RG:#`Su-<~sKci")},
 		{true, "107C1212954CD5AC0435CABDE0E9D1135EC07D8C42802A00B571F2C8292775B8", asciiBytes("T3#F!B+w`l($](cORXRw5f'/N1S.5sLfbfNhcuSRi0*5E5b$?M%_QGcI/+=Xlwo1~WewY|Y7q.j<rE95-\\?-EteTnO!hh4V\"ucruMc\\N6-@CDDDZ  Rv'`M1KGX(69G")},
 		{true, "2F04A53A7A557AB8D986BA961EEB417C33D1C411399092AFFA33ED0F13F5C504", asciiBytes("[SX]k-w:t,bsdb$(hvN9CJcCR]ln<tpVi0#]-1D\"2SF~t/Y2ITCYWVm|3DvVpK-q{@KrP*+32ZqcMx=`(=##(#53W%[(Y)on.@<g0JO,ic(A_nCF<@ItmGO)S^45ZWBT")},
+#endif
 	}};
 	for (const TestCase &tc : singleCases) {
 		const Sha256Hash actualHash = Sha256::getHash(tc.message.data(), tc.message.size());
@@ -246,6 +253,3 @@ TEST(sha256,  stateful_hasher) {
 	{ Sha256 h;  ap(h, "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");              assert(h.getHash() == Sha256Hash("C106DB19D4EDECF66721FF6459E43CA339603E0C9326C0E5B83806D2616A8D24")); }
 	{ Sha256 h;  ap(h, "abcdbcdecdefde");  ap(h, "fgefghfghighijhijkijkljklmklmnlmnomnopnopq");  assert(h.getHash() == Sha256Hash("C106DB19D4EDECF66721FF6459E43CA339603E0C9326C0E5B83806D2616A8D24")); }
 }
-
-
-}  // namespace bcl
