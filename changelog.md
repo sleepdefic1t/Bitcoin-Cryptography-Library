@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   disables X8664 and stashes files in extras/nayuki.
 -   stashes original Makefile in extras/nayuki.
 -   stashes java implementation in extras/nayuki.
--   added platformio configuration files, testing disabled (cases not small enough for IoT yet).
+-   added platformio configuration files.
 -   added keywords.txt.
 -   added library manifest files.
 -   updated license.
