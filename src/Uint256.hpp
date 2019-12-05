@@ -12,7 +12,6 @@
 
 namespace bcl {
 
-
 class FieldInt;  // Forward declaration
 
 

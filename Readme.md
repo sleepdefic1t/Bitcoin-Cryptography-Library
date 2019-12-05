@@ -1,42 +1,37 @@
-BCL: Nayuki's Bitcoin Cryptography Library
-==========================================
+
+# BCL: Nayuki's Bitcoin Cryptography Library
+
 > A fork of Nayuki's Bitcoin Cryptography Library using CMake, PlatformIO & GoogleTest/AUnit 
 
-about
------
+All credit goes to [Nayuki](https://www.nayuki.io) for [github.com/nayuki/Bitcoin-Cryptography-Library](https://github.com/nayuki/Bitcoin-Cryptography-Library).
 
-All credit for [github.com/nayuki/Bitcoin-Cryptography-Library](https://github.com/nayuki/Bitcoin-Cryptography-Library) goes to [Nayuki](https://www.nayuki.io).
 Although this fork _does_ rearrange quite a few things, it attempts to change very little of the original code itself. It is primarily concerned with repackaging BCL, an already-excellent library, to better suit my own uses.
-Please see the changelog for more details. 
 
-Requirements
-------------
+Please see the changelog for more details.
 
--   Git
--   Cmake
+## Requirements
 
-This project builds out of source
----------------------------------
+- Git
+- Cmake
 
-```bash
-mkdir build && cd build && cmake ../ && cmake --build .
-```
+## Building
 
-Run tests after building:
-```bash
-# from the build dir
-./test/bcl_tests
-```
+This project builds out of source.
 
+Build BCL:
 
+- `mkdir build && cd build`
+- `cmake ..`
+- `cmake --build ..`
 
-TODO
-----
--    re-implement X8664 code.
--    re-implement CountOps.
+Build BCL and run Unit Tests:
 
-Nayuki's Bitcoin cryptography library
-=====================================
+- `mkdir build && cd build`
+- `cmake -DUNIT_TEST=ON ..`
+- `cmake --build ..`
+- `./test/bcl_tests`
+
+# Nayuki's Bitcoin cryptography library
 
 This project implements the cryptographic primitives used in the Bitcoin system,
 especially elliptic curve operations and hash functions.
@@ -52,12 +47,10 @@ correctness and quality.
 More details about features and design principles are on the main web page:
 [https://www.nayuki.io/page/bitcoin-cryptography-library](https://www.nayuki.io/page/bitcoin-cryptography-library)
 
-
-License
--------
+# License
 
 Copyright © 2019 Project Nayuki. (MIT License)
-Copyright © 2019 Simon Downey (ARK.io). (MIT License)
+Copyright © Simon Downey <simon@ark.io> (MIT License)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

@@ -11,7 +11,6 @@
 
 namespace bcl {
 
-
 using std::uint8_t;
 
 

@@ -12,6 +12,8 @@
 #include "CurvePoint.hpp"
 #include "Uint256.hpp"
 
+#define BCL_USE_EXTENDED_PRIVATEKEY
+
 namespace bcl {
 
 

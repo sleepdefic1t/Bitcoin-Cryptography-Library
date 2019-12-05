@@ -15,11 +15,9 @@
 
 namespace bcl {
 
-
 using std::uint8_t;
 using std::uint32_t;
 using std::size_t;
-
 
 
 /*---- Public and private functions for bytes-to-Base58 conversion ----*/
@@ -46,7 +44,7 @@ void Base58Check::privateKeyToBase58Check(const Uint256 &privKey, uint8_t versio
 	bytesToBase58Check(toEncode, temp, arrayLen - (isCompressed ? 4 : 5), outStr);
 }
 
-
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
 void Base58Check::extendedPrivateKeyToBase58Check(const ExtendedPrivateKey &key, char outStr[112]) {
 	assert(outStr != nullptr);
 	constexpr size_t arrayLen = 4 + 1 + 4 + 4 + 32 + 1 + 32 + 4;
@@ -61,7 +59,7 @@ void Base58Check::extendedPrivateKeyToBase58Check(const ExtendedPrivateKey &key,
 	uint8_t temp[arrayLen];
 	bytesToBase58Check(toEncode, temp, arrayLen - 4, outStr);
 }
-
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
 
 void Base58Check::bytesToBase58Check(uint8_t data[], uint8_t temp[], size_t dataLen, char *outStr) {
 	// Append 4-byte hash
@@ -93,9 +91,9 @@ void Base58Check::bytesToBase58Check(uint8_t data[], uint8_t temp[], size_t data
 	if (outLen == 0)
 		return;  // Exit early to ensure that j does not overflow
 	for (size_t i = 0, j = outLen - 1; i < j; i++, j--) {
-		char temp = outStr[i];
+		char tp = outStr[i];
 		outStr[i] = outStr[j];
-		outStr[j] = temp;
+		outStr[j] = tp;
 	}
 }
 
@@ -183,6 +181,7 @@ bool Base58Check::privateKeyFromBase58Check(const char wifStr[53], Uint256 &outP
 }
 
 
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
 bool Base58Check::extendedPrivateKeyFromBase58Check(const char xprvStr[112], ExtendedPrivateKey &outKey) {
 	// Preliminary checks
 	assert(xprvStr != nullptr);
@@ -216,6 +215,7 @@ bool Base58Check::extendedPrivateKeyFromBase58Check(const char xprvStr[112], Ext
 	outKey = ExtendedPrivateKey(privateKey, chainCode, depth, index, parentPubkeyHash);
 	return true;
 }
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
 
 
 bool Base58Check::base58CheckToBytes(const char *inStr, uint8_t outData[], size_t outDataLen) {

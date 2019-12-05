@@ -709,6 +709,7 @@ TEST(base58check, private_key_import) {
 	}
 }
 
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
 
 struct ExtendedCase {
 	const char *privateKey;
@@ -761,3 +762,5 @@ TEST(base58check, extended_private_key_import) {
 		assert(std::memcmp(actual.parentPubkeyHash, expect.parentPubkeyHash, sizeof(actual.parentPubkeyHash)) == 0);
 	}
 }
+
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
