@@ -10,7 +10,11 @@
 
 #include <cstddef>
 #include <cstdint>
-#include "ExtendedPrivateKey.hpp"
+
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
+	#include "ExtendedPrivateKey.hpp"
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
+
 #include "Ripemd160.hpp"
 #include "Uint256.hpp"
 
@@ -37,11 +41,13 @@ class Base58Check final {
 	// The output text length is between 38 and 52 characters, inclusive. Not constant-time.
 	public: static void privateKeyToBase58Check(const Uint256 &privKey, std::uint8_t version, bool isCompressed, char outStr[53]);
 	
-	
+
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
 	// Exports the given extended private key with the Bitcoin header and version prefix byte.
 	// The outStr array must have length >= 112 (including null terminator).
 	// The output text length is always 111 characters. Not constant-time.
 	public: static void extendedPrivateKeyToBase58Check(const ExtendedPrivateKey &key, char outStr[112]);
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
 	
 	
 	/*---- Public import-from-string functions ----*/
@@ -60,11 +66,12 @@ class Base58Check final {
 	public: static bool privateKeyFromBase58Check(const char wifStr[53], Uint256 &outPrivKey, std::uint8_t *outVersion, bool *outIsCompressed);
 	
 	
+#if defined (BCL_USE_EXTENDED_PRIVATEKEY)
 	// Parses the given extended private key string. If the syntax and check digits are correct,
 	// then the extended private key object is set to the decoded value, and true is returned.
 	// Otherwise the object is unchanged, and false is returned. Not constant-time.
 	public: static bool extendedPrivateKeyFromBase58Check(const char xprvStr[112], ExtendedPrivateKey &outKey);
-	
+#endif  // defined (BCL_USE_EXTENDED_PRIVATEKEY)
 	
 	
 	/*---- Private high-level Base58Check functions ----*/

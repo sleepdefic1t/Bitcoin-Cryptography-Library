@@ -12,7 +12,6 @@
 
 namespace bcl {
 
-
 using std::uint8_t;
 using std::uint64_t;
 using std::size_t;

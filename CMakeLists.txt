@@ -1,10 +1,17 @@
 
-cmake_minimum_required(VERSION 3.2.2)
+cmake_minimum_required(VERSION 3.2)
 
-project(BCL)
+project(bcl)
+
+# ------------------------------------------------------------------------------
+# Set the Environment Variables
+# ------------------------------------------------------------------------------
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
+set(EXTERNAL_LIBRARY_DIR ${PROJECT_SOURCE_DIR}/extern)
 
 if (MSVC)
 	add_definitions(
@@ -17,11 +24,28 @@ if (MSVC)
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 endif()
 
-# clone submodules
-execute_process(
-	COMMAND git submodule update --init --recursive
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Add the BCL Library Subdirectory
+# ------------------------------------------------------------------------------
 
 add_subdirectory(src)
-add_subdirectory(test)
+
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Add the BCL Test Subdirectory
+#
+# Disabled by default.
+#
+# Use `cmake -DUNIT_TEST=ON .` to enable Test building.
+# ------------------------------------------------------------------------------
+
+option(UNIT_TEST "BCL tests disabled by default" OFF)
+
+if(UNIT_TEST)
+    add_subdirectory(test)
+endif()
+
+# ------------------------------------------------------------------------------

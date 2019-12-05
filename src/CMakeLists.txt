@@ -3,11 +3,14 @@ cmake_minimum_required(VERSION 3.2.2)
 
 project(bcl C CXX)
 
-set(BCL_SRC
+# ------------------------------------------------------------------------------
+# BCL Source
+# ------------------------------------------------------------------------------
+
+set(BCL_SOURCE
 	Base58Check.cpp
 	CurvePoint.cpp
 	Ecdsa.cpp
-	# EcdsaOpCount.cpp
 	ExtendedPrivateKey.cpp
 	FieldInt.cpp
 	Keccak256.cpp
@@ -19,7 +22,19 @@ set(BCL_SRC
 	Utils.cpp
 )
 
-add_library(${PROJECT_NAME} SHARED STATIC ${BCL_SRC})
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Add the Source Files to the Library
+# ------------------------------------------------------------------------------
+
+add_library(${PROJECT_NAME} SHARED STATIC ${BCL_SOURCE})
+
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Set the Include Folders
+# ------------------------------------------------------------------------------
 
 set(BCL_BUILD_INCLUDE_DIRS ${PROJECT_SOURCE_DIR})
 
@@ -27,6 +42,14 @@ include_directories(${BCL_BUILD_INCLUDE_DIRS})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${BCL_BUILD_INCLUDE_DIRS} )
 
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Windows: Link to `crypt32`
+# ------------------------------------------------------------------------------
+
 if (MSVC)
 	target_link_libraries(${PROJECT_NAME} PUBLIC crypt32)
 endif()
+
+# ------------------------------------------------------------------------------
