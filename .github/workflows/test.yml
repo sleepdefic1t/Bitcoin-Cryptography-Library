@@ -16,12 +16,12 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{github.workspace}}/build
+      run: mkdir ${{github.workspace}}/build
 
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build
-      run: cmake -DUNIT_TEST=ON $GITHUB_WORKSPACE
+      run: cmake -DUNIT_TEST=ON ..
 
     - name: Build
       working-directory: ${{github.workspace}}/build
