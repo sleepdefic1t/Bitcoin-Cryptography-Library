@@ -9,26 +9,21 @@ on:
     types: [ready_for_review, synchronize, opened]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  macos:
+    runs-on: macOS-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - run: COMPILER=clang++
 
-    - name: Create Build Environment
-      run: mkdir ${{github.workspace}}/build
+      - name: Install Dependencies
+        run: brew install cmake
 
-    - name: Configure CMake
-      shell: bash
-      working-directory: ${{github.workspace}}/build
-      run: cmake -DUNIT_TEST=ON ..
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake -DUNIT_TEST=ON ..
+          cmake --build .
 
-    - name: Build
-      working-directory: ${{github.workspace}}/build
-      shell: bash
-      run: cmake --build ..
-
-    - name: Test
-      working-directory: ${{github.workspace}}/build
-      shell: bash
-      run: ./test/bcl_tests
+      - name: Run Tests
+        run: ./build/test/bcl_tests
