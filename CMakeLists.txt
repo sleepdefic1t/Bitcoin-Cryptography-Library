@@ -30,6 +30,12 @@ endif()
 # Add the BCL Library Subdirectory
 # ------------------------------------------------------------------------------
 
+option(BCL_USE_EXTENDED_PRIVATEKEY "Extended PrivateKeys disabled by default" OFF)
+
+if(BCL_USE_EXTENDED_PRIVATEKEY)
+    add_definitions(-DBCL_USE_EXTENDED_PRIVATEKEY)
+endif()
+
 add_subdirectory(src)
 
 # ------------------------------------------------------------------------------
