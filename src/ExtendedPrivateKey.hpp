@@ -8,11 +8,11 @@
 
 #pragma once
 
+#if defined(BCL_USE_EXTENDED_PRIVATEKEY)
+
 #include <cstdint>
 #include "CurvePoint.hpp"
 #include "Uint256.hpp"
-
-#define BCL_USE_EXTENDED_PRIVATEKEY
 
 namespace bcl {
 
@@ -53,3 +53,5 @@ class ExtendedPrivateKey final {
 
 
 }  // namespace bcl
+
+#endif  // BCL_USE_EXTENDED_PRIVATEKEY
