@@ -6,6 +6,8 @@
  * https://github.com/nayuki/Bitcoin-Cryptography-Library
  */
 
+#if defined(BCL_USE_EXTENDED_PRIVATEKEY)
+
 #include <cstring>
 #include "ExtendedPrivateKey.hpp"
 #include "Ripemd160.hpp"
@@ -70,3 +72,5 @@ ExtendedPrivateKey ExtendedPrivateKey::getChildKey(uint32_t index) const {
 
 
 }  // namespace bcl
+
+#endif  // BCL_USE_EXTENDED_PRIVATEKEY
