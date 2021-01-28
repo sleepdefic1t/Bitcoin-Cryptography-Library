@@ -8,6 +8,8 @@
  * https://github.com/nayuki/Bitcoin-Cryptography-Library
  */
 
+#if defined(BCL_USE_EXTENDED_PRIVATEKEY)
+
 #include "gtest/gtest.h"
 
 #include "TestHelper.hpp"
@@ -70,3 +72,5 @@ TEST(extended_private_key, child_keys) {
 	child = child.getChildKey(UINT32_C(65536));
 	ASSERT_TRUE(child.privateKey == Uint256("A03A015E0936119558D022514AC8326B340FC69C3266442603A3C212004054E3"));
 }
+
+#endif  // BCL_USE_EXTENDED_PRIVATEKEY
